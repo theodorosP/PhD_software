@@ -1,0 +1,45 @@
+SYSTEM = Ge 
+
+ISTART= 0
+
+EDIFF = 0.000001  # Convergence for energy
+EDIFFG= -0.01     # Convergence for force
+
+PREC  = ACCURATE 
+LREAL = .FALSE.
+
+# Cut off energy setting
+ENCUT = 500
+ENAUG = 5000
+
+# Writing charge density and wave function
+LWAVE = .FALSE.
+LCHARG = .FALSE.
+
+# Smearning setting
+ISMEAR = 0
+SIGMA = 0.1
+
+NBANDS = 16
+
+# Electronic optimization setting
+NELM = 200
+#NSIM = 4
+#IALGO = 48
+#AMIX = 0.2
+#BMIX = 0.0001
+#AMIX_MAG = 0.8
+
+# Ionic relaxtion setting
+NSW = 0
+IBRION = -1
+
+# DFT+U Setting
+LDAU = .TRUE.
+LDAUTYPE = 2
+LDAUL=1
+LDAUU=0
+LDAUJ=2.94
+
+#Paralellization setting
+NCORE = 16 

@@ -1,0 +1,20 @@
+#!/bin/bash -l
+##SBATCH -o ./tjob.out.%j
+##SBATCH -e ./tjob.err.%j
+##SBATCH -D ./
+#SBATCH -J parse
+##SBATCH --partition=express
+#SBATCH --nodes=12
+#SBATCH --ntasks-per-node=40
+#SBATCH --mail-type=all
+#SBATCH --mail-user=teosfp@hotmail.com
+#SBATCH --time=00:30:00
+
+
+export loc=path_to_working_dir
+
+for i in `seq 0 1 12`
+do
+cd $loc/K.$i; python -u  ../parse_1doscar.py > parse.log &
+done
+wait
