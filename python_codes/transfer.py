@@ -19,6 +19,7 @@ def tranfer(path):
 	os.system(cmd)
 	cmd = 'chmod g+r -R *'
 	os.system(cmd)
-	
+
+
 tranfer( '/cobra/u/trahman/data/theo/Bi/Pt/Pt/Pt_fcc_fcc') 
 tranfer( '/cobra/u/trahman/data/theo/Bi/Pt/Pt/Pt_fcc_hcp')
