@@ -73,8 +73,7 @@ while true; do
         echo "Job is RUNNING, I will check again, job_status = $job_status"
     fi
     repeat_string "--"
-    
-    # Countdown timer
+
     for ((i = CHECK_INTERVAL; i > 0; i--)); do
         echo -ne "\rChecking again in $i seconds..."
         sleep 1
