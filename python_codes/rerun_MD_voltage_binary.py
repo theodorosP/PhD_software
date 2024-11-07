@@ -103,7 +103,7 @@ def submit_job():
 	cpath = os.getcwd()
 	parse_INCAR()
 	os.chdir( cpath )
-	#os.system( "sbatch job" )
+	os.system( "sbatch job" )
 
 if __name__ == "__main__":
 	submit_job()
