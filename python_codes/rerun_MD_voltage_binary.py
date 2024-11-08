@@ -1,24 +1,4 @@
 import os
-import glob
-
-def sub():
-    path = os.getcwd()
-    dirs = [ i for i in os.listdir( path ) if os.path.isdir( i ) == True ]
-    print( dirs )
-    for i in dirs:
-        os.chdir( path + "/" + i )
-        os.system( "python rerun.py" )
-
-if __name__ == "__main__":
-    sub()
-[trahman@viper01 MD_voltage]$ nano rerun.py 
-[trahman@viper01 MD_voltage]$ ls
-CH3NH3  Na  NH4  rerun.py  sub.sh
-[trahman@viper01 MD_voltage]$ cd CH3NH3/
-[trahman@viper01 CH3NH3]$ ls
-1_CH3NH3_40_H2O  3_CH3NH3_40_H2O  5_CH3NH3_40_H2O  job  rerun.py  slurm-300582.out
-[trahman@viper01 CH3NH3]$ cat rerun.py 
-import os
 import re
 import glob
 import shutil
@@ -50,12 +30,12 @@ def make_dirs_and_copy():
 
 def get_OUTCAR_NELECT():
 	files = [ i for i in glob.glob( "*" ) if os.path.isfile( i ) ]
-	print( files )
+	#print( files )
 	if "OUTCAR" in files:
 		print( "OUTCAR found" )
-		with open( "OUTCAR", "rb" ) as file:
+		with open( "OUTCAR", "r" ) as file:
 			lines = file.readlines()
-		nelect_lines = [ line.decode('utf-8', errors='ignore').strip() for line in lines if b"NELECTCURRENT" in line ]
+		nelect_lines = [ i for i in lines if "NELECTCURRENT" in i ]
 		last_line = nelect_lines[ - 1 ].strip()
 		#print( last_line )
 		if nelect_lines:
