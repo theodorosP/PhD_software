@@ -31,14 +31,17 @@ def make_dirs_and_copy():
 
 def get_OUTCAR_NELECT():
     files = [ i for i in glob.glob( "*" ) if os.path.isfile( i ) ]
+    #print( files )
     if "OUTCAR" in files:
         print( "OUTCAR found" )
         with open( "OUTCAR", "rb" ) as file:
             lines = file.readlines()
         nelect_lines = [line.decode('utf-8', errors='ignore').strip() for line in lines if b"NELECTCURRENT" in line]
         last_line = nelect_lines[ - 1 ].strip()
+        #print( last_line )
         if nelect_lines:
             match =  re.search( r'NELECTCURRENT\s+([\d.-]+)', last_line )
+            #print( "NELECTCURRENT = ", match.group( 1 )  )
             return  float( match.group( 1 ) )
         else:
             print( "NELECT not found yet" )
