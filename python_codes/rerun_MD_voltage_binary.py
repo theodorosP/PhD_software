@@ -1,4 +1,4 @@
-import os
+>import os
 import re
 import glob
 import shutil
@@ -71,7 +71,8 @@ def parse_INCAR():
     path, dirs = get_path_and_dirs()
     for i in dirs:
         os.chdir( path + "/" + i  )
-        print( "--" * 10 )
+        path_new = os.getcwd()
+        print( "-" * len( path_new ) )
         print( os.getcwd()  )
         NELECTCURRENT = get_OUTCAR_NELECT()
         print( "nelect =", NELECTCURRENT )
@@ -82,7 +83,8 @@ def submit_job():
     cpath = os.getcwd()
     parse_INCAR()
     os.chdir( cpath )
-    os.system( "sbatch job" )
+    #os.system( "sbatch job" )
 
 if __name__ == "__main__":
     submit_job()
+
