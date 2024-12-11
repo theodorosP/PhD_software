@@ -20,4 +20,11 @@ search_pairs() {
   done
 }
 
-search_pairs "224 199" "223 214" "220 210" "222 202"
+dirs=$(ls -d */)
+for i in $dirs
+do
+	cd $i
+	echo -e "\e[43m$i\e[0m"
+	search_pairs "83 125" "76 146" "101 180" "189 188"
+	cd ../
+	done
